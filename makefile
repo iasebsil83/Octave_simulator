@@ -1,22 +1,16 @@
-exe: octavesim.o libisentlib.a
-	gcc -Wall -o octave octavesim.o libisentlib.a -lm -lglut -lGL -lX11
+run: octaveSim.o S2DE.o
+	gcc -Wall -o run octaveSim.o S2DE.o -lm -lglut -lGL
 	rm -f *.o
 
 
-#GfxLib management (use libisentlib.a to use access to graphic engine)
-libisentlib.a: ESLib.o GfxLib.o
-	ar r libisentlib.a ESLib.o GfxLib.o
-	ranlib libisentlib.a
 
-ESLib.o: ESLib.c ESLib.h ErreurLib.h
-	gcc -Wall -O2 -c ESLib.c
+#octave simulator
+octaveSim.o: octaveSim.c S2DE.h
+	gcc -Wall -O2 -c octaveSim.c
 
-GfxLib.o: GfxLib.c GfxLib.h ESLib.h
-	gcc -Wall -O2 -c GfxLib.c -I/usr/include/GL
 
-clean:
-	rm -f *~ *.o
 
-deepclean: clean
-	rm -f exe libisentlib.a
+#S2DE management (use S2DE.o/.h to access to 2D graphic engine)
+S2DE.o: S2DE.c S2DE.h
+	gcc -Wall -O2 -c S2DE.c -I/usr/include/GL
 
