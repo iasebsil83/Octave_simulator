@@ -4,7 +4,7 @@
 #include <math.h>
 
 //graphics
-#include "S2DE.h"
+#include "../lib/S2DE.h"
 
 
 
@@ -127,7 +127,13 @@ double dirac(double x){
 
 
 
-// ====================== MAIN CODE ========================
+
+
+
+
+
+
+// ====================== EXECUTION ========================
 
 // ---- events ----
 void S2DE_event(int event){
@@ -164,10 +170,10 @@ void S2DE_event(int event){
 		case S2DE_KEYBOARD:
 		break;
 
-		case S2DE_MOUSECLICK:
+		case S2DE_MOUSE_CLICK:
 		break;
 
-		case S2DE_MOUSEMOVE:
+		case S2DE_MOUSE_MOVE:
 		break;
 
 		case S2DE_TIMER:
